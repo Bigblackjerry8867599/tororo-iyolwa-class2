@@ -6,7 +6,7 @@
     <title>Solutions | MEALCARTA - Community-Driven Experiences</title>
     <meta name="description" content="Discover UPTOPIA's solutions for hosts and attendees to create meaningful community experiences.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #330000;
@@ -16,7 +16,8 @@
             --accent: #ffd166;
             --text: #333333;
             --other: #609779;
-            --hero-grey: #121212;
+            --hero-bg: #1d1160;              /* Suns purple */
+            --banner-black: #000000;
             --card-charcoal: #2b2622;
             --card-charcoal-hover: #352e28;
             --card-gold-seam: rgba(255, 209, 102, 0.15);
@@ -41,11 +42,11 @@
             font-weight: 600;
         }
 
-        /* ===== SLIM NAV — shares the hero background ===== */
+        /* ===== SLIM NAV — shares the hero background (Suns purple) ===== */
         nav {
             position: sticky;
             top: 0;
-            background: var(--hero-grey);
+            background: var(--hero-bg);
             z-index: 1000;
             border-bottom: none;
             padding: 0;
@@ -125,9 +126,10 @@
                 gap: 0.75rem;
                 min-width: 200px;
                 padding: 0.9rem 1rem;
-                background: #3a3a3a;
+                background: var(--banner-black);   /* echo the banner */
                 box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
                 border-radius: 6px;
+                border-top: 1px solid rgba(255, 209, 102, 0.28);
                 z-index: 999;
             }
 
@@ -228,17 +230,18 @@
         /* ===== HERO ===== */
         section.hero {
             position: relative;
-            background: var(--hero-grey);
+            background: var(--hero-bg);
             overflow: hidden;
         }
 
+        /* Banner — text column above the landscape, on pure black */
         .hero-banner {
             min-height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 22px 20px;
-            background: var(--hero-grey);
+            background: var(--banner-black);
             position: relative;
         }
 
@@ -309,14 +312,13 @@
             margin-top: 10px;
         }
 
-        /* ===== MOBILE BANNER — keep TWO columns ===== */
+        /* Mobile banner — keep TWO columns */
         @media (max-width: 640px) {
             .hero-banner {
                 min-height: 140px;
                 padding: 18px 10px;
             }
 
-            /* keep two columns on phones */
             .hero-banner-columns {
                 grid-template-columns: 1fr 1fr;
                 gap: 0;
@@ -328,7 +330,6 @@
                 text-align: center;
             }
 
-            /* hairline gold divider between the two columns */
             .hero-banner-col + .hero-banner-col {
                 border-left: 1px solid rgba(255, 209, 102, 0.28);
             }
@@ -341,7 +342,7 @@
 
             .hero-banner-text {
                 font-size: clamp(0.7rem, 3.3vw, 0.92rem);
-                letter-spacing: 0.04em;   /* desktop 0.12em is too wide here */
+                letter-spacing: 0.04em;
                 line-height: 1.4;
                 overflow-wrap: break-word;
                 hyphens: none;
@@ -349,7 +350,7 @@
 
             .hero-banner-text .dot {
                 margin: 0 0.15em;
-                display: inline;          /* lets the line wrap cleanly at the dot */
+                display: inline;
             }
 
             .hero-banner-sub {
@@ -373,10 +374,85 @@
             display: block;
         }
 
+        /* ===== MAGAZINE / GREETING-CARD PASSAGE (under the landscape, on purple) ===== */
+        .hero-magazine {
+            background: transparent;
+            padding: 68px 24px 26px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-magazine-inner {
+            max-width: 680px;
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .hero-magazine-inner::before {
+            content: '';
+            display: block;
+            width: 44px;
+            height: 1px;
+            background: var(--accent);
+            margin: 0 auto 26px;
+            opacity: 0.75;
+        }
+
+        .mag-kicker {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.66rem;
+            font-weight: 600;
+            letter-spacing: 0.42em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .mag-headline {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.4rem, 3.2vw, 2.15rem);
+            line-height: 1.32;
+            color: #ffffff;
+            margin-bottom: 22px;
+            letter-spacing: 0.01em;
+        }
+
+        .mag-body {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.82);
+            line-height: 1.85;
+            max-width: 560px;
+            margin: 0 auto 20px;
+        }
+
+        .mag-signature {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--accent);
+            opacity: 0.85;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 640px) {
+            .hero-magazine { padding: 48px 20px 18px; }
+            .hero-magazine-inner::before { margin-bottom: 20px; }
+            .mag-kicker { font-size: 0.56rem; letter-spacing: 0.3em; margin-bottom: 16px; }
+            .mag-headline { font-size: clamp(1.15rem, 5vw, 1.55rem); margin-bottom: 18px; }
+            .mag-body { font-size: 0.87rem; line-height: 1.8; }
+            .mag-signature { font-size: 0.78rem; }
+        }
+
         .hero-inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 48px 30px 60px;
+            padding: 34px 30px 60px;
             display: flex;
             align-items: center;
             gap: 60px;
@@ -401,7 +477,7 @@
             max-width: 480px;
             height: auto;
             display: block;
-            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.4));
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.45));
             pointer-events: none;
         }
 
@@ -506,7 +582,7 @@
         }
 
         @media (max-width: 992px) {
-            .hero-inner { gap: 40px; padding: 40px 24px 50px; }
+            .hero-inner { gap: 40px; padding: 30px 24px 50px; }
             .hero-cards-viewport { max-height: 380px; }
             .hero-card-title { font-size: 1.5rem; }
             .hero-card-tagline { font-size: 1.1rem; }
@@ -517,7 +593,7 @@
             .hero-inner {
                 flex-direction: column;
                 gap: 28px;
-                padding: 32px 20px 50px;
+                padding: 28px 20px 50px;
             }
             .hero-left, .hero-right {
                 width: 100%;
@@ -526,11 +602,10 @@
             .hero-right { order: -1; }
             .hero-lady { max-width: 280px; }
             .hero-cards-viewport { max-height: 360px; }
-            .hero-banner { min-height: 150px; }
         }
 
         @media (max-width: 480px) {
-            .hero-inner { padding: 28px 16px 40px; }
+            .hero-inner { padding: 24px 16px 40px; }
             .hero-lady { max-width: 220px; }
             .hero-cards-viewport { max-height: 320px; }
             .hero-card { padding: 22px 20px 24px; }
@@ -539,8 +614,6 @@
             .hero-card-tagline { font-size: 1rem; }
             .hero-card-text { font-size: 0.85rem; }
             .hero-card-label { font-size: 0.62rem; letter-spacing: 1.4px; }
-            .hero-banner-kicker { font-size: 0.55rem; letter-spacing: 0.32em; }
-            .hero-banner-text { font-size: 0.9rem; letter-spacing: 0.08em; }
         }
 
         /* Solutions Overview */
@@ -976,6 +1049,8 @@
 
     <!-- Hero Section -->
     <section class="hero">
+
+        <!-- Banner — text column above the landscape, on black -->
         <div class="hero-banner" aria-label="Mealcarta invitation banner">
             <div class="hero-banner-inner">
                 <p class="hero-banner-kicker">A Mealcarta Invitation</p>
@@ -992,6 +1067,7 @@
             </div>
         </div>
 
+        <!-- Landscape image strip -->
         <div class="hero-landscape">
             <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1800&h=700&q=80"
                  alt="A long communal table set for a shared meal"
@@ -999,6 +1075,21 @@
                  decoding="async">
         </div>
 
+        <!-- Magazine / greeting-card passage — sits on the purple hero, no columns -->
+        <div class="hero-magazine" aria-label="A note from the Mealcarta editors">
+            <div class="hero-magazine-inner">
+                <p class="mag-kicker">Issue No. 01 · The Table</p>
+                <p class="mag-headline">The shortest distance between strangers<br>is a shared meal.</p>
+                <p class="mag-body">
+                    We set the table not to feed people, but to bring them closer. Every plate passed,
+                    every story told, every pause between bites is a quiet invitation — to listen, to
+                    linger, to belong. What follows is not a menu. It is a place to start.
+                </p>
+                <p class="mag-signature">— The Mealcarta Editors</p>
+            </div>
+        </div>
+
+        <!-- Hero content: cards LEFT, image RIGHT (unchanged) -->
         <div class="hero-inner">
             <div class="hero-left">
                 <div class="hero-cards-viewport" aria-label="Mealcarta hero highlights — scroll or swipe vertically to explore">
@@ -1435,4 +1526,4 @@
         });
     </script>
 </body>
-    </html>
+</html>

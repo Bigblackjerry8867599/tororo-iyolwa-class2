@@ -16,7 +16,7 @@
             --accent: #ffd166;
             --text: #333333;
             --other: #609779;
-            --hero-bg: #1d1160;              /* Suns purple */
+            --hero-bg: #122e2b;              /* deep teal */
             --banner-black: #000000;
             --card-charcoal: #2b2622;
             --card-charcoal-hover: #352e28;
@@ -42,7 +42,7 @@
             font-weight: 600;
         }
 
-        /* ===== SLIM NAV — shares the hero background (Suns purple) ===== */
+        /* ===== SLIM NAV — shares the hero background (deep teal) ===== */
         nav {
             position: sticky;
             top: 0;
@@ -126,7 +126,7 @@
                 gap: 0.75rem;
                 min-width: 200px;
                 padding: 0.9rem 1rem;
-                background: var(--banner-black);   /* echo the banner */
+                background: var(--banner-black);
                 box-shadow: 0 8px 18px rgba(0, 0, 0, 0.55);
                 border-radius: 6px;
                 border-top: 1px solid rgba(255, 209, 102, 0.28);
@@ -234,31 +234,18 @@
             overflow: hidden;
         }
 
-        /* Banner — text column above the landscape, on pure black */
+        /* Banner — HALF the previous height, no gold top/bottom lines */
         .hero-banner {
-            min-height: 150px;
+            min-height: 75px;               /* was 150px */
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 22px 20px;
+            padding: 10px 20px;             /* was 22px 20px */
             background: var(--banner-black);
             position: relative;
         }
 
-        .hero-banner::before,
-        .hero-banner::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 64px;
-            height: 2px;
-            background: var(--accent);
-            opacity: 0.85;
-            border-radius: 2px;
-        }
-        .hero-banner::before { top: 10px; }
-        .hero-banner::after  { bottom: 10px; }
+        /* (top/bottom gold seams removed) */
 
         .hero-banner-inner {
             max-width: 1000px;
@@ -273,7 +260,7 @@
             letter-spacing: 0.42em;
             text-transform: uppercase;
             color: var(--accent);
-            margin-bottom: 14px;
+            margin-bottom: 8px;
         }
 
         .hero-banner-columns {
@@ -309,20 +296,20 @@
             letter-spacing: 0.22em;
             text-transform: uppercase;
             color: rgba(255, 255, 255, 0.65);
-            margin-top: 10px;
+            margin-top: 6px;
         }
 
-        /* Mobile banner — keep TWO columns */
+        /* Mobile banner — keep TWO columns, half height */
         @media (max-width: 640px) {
             .hero-banner {
-                min-height: 140px;
-                padding: 18px 10px;
+                min-height: 70px;           /* was 140px */
+                padding: 9px 10px;
             }
 
             .hero-banner-columns {
                 grid-template-columns: 1fr 1fr;
                 gap: 0;
-                align-items: start;
+                align-items: center;
             }
 
             .hero-banner-col {
@@ -337,13 +324,13 @@
             .hero-banner-kicker {
                 font-size: 0.5rem;
                 letter-spacing: 0.24em;
-                margin-bottom: 10px;
+                margin-bottom: 6px;
             }
 
             .hero-banner-text {
                 font-size: clamp(0.7rem, 3.3vw, 0.92rem);
                 letter-spacing: 0.04em;
-                line-height: 1.4;
+                line-height: 1.35;
                 overflow-wrap: break-word;
                 hyphens: none;
             }
@@ -356,8 +343,8 @@
             .hero-banner-sub {
                 font-size: 0.54rem;
                 letter-spacing: 0.1em;
-                line-height: 1.35;
-                margin-top: 6px;
+                line-height: 1.3;
+                margin-top: 4px;
             }
         }
 
@@ -374,7 +361,7 @@
             display: block;
         }
 
-        /* ===== MAGAZINE / GREETING-CARD PASSAGE (under the landscape, on purple) ===== */
+        /* ===== MAGAZINE / GREETING-CARD PASSAGE (under the landscape, on teal) ===== */
         .hero-magazine {
             background: transparent;
             padding: 68px 24px 26px;
@@ -1050,17 +1037,14 @@
     <!-- Hero Section -->
     <section class="hero">
 
-        <!-- Banner — text column above the landscape, on black -->
+        <!-- Banner — half height, no gold lines, on black -->
         <div class="hero-banner" aria-label="Mealcarta invitation banner">
             <div class="hero-banner-inner">
-              
                 <div class="hero-banner-columns">
                     <div class="hero-banner-col">
                         <h1 class="hero-banner-text"> GET ANSWERS <span class="dot">·</span> - </h1>
-                        
                     </div>
                     <div class="hero-banner-col">
-                        
                         <p class="hero-banner-sub">Ideas that move communities</p>
                     </div>
                 </div>
@@ -1075,7 +1059,7 @@
                  decoding="async">
         </div>
 
-        <!-- Magazine / greeting-card passage — sits on the purple hero, no columns -->
+        <!-- Magazine / greeting-card passage — sits on the teal hero, no columns -->
         <div class="hero-magazine" aria-label="A note from the Mealcarta editors">
             <div class="hero-magazine-inner">
                 <p class="mag-kicker">Issue No. 01 · The Table</p>
@@ -1526,4 +1510,4 @@
         });
     </script>
 </body>
-</html>
+                                </html>
